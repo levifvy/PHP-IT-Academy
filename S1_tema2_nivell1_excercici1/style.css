@@ -1,0 +1,155 @@
+.header {
+    margin: 40px;
+    width: 1200px;
+    height: 260px;
+    border: 40px black solid;
+}
+
+.contenedor_arriba {
+    width: 1200px;
+    height: 120px;
+    background-color: #1A2752;
+    border-bottom: 10px black solid;
+    position: relative;
+}
+
+.dreta {
+    width: 120px;
+    height: 40px;
+    background-color: #DF5C16;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.centre {
+    width: 800px;
+    height: 40px;
+    background-color: #DF5C16;
+    position: absolute;
+    top: 40px;
+    left: 200px;
+}
+
+.ezquerra {
+    width: 120px;
+    height: 40px;
+    background-color: #DF5C16;
+    position: absolute;
+    top: 40px;
+    left: 1040px;
+}
+
+.contenedor_abajo {
+    width: 1200px;
+    height: 120px;
+    padding: 0;
+    background-color: #15d338;
+    border-top: 10px black solid;
+    position: relative;
+}
+
+.segundo {
+    width: 1120px;
+    height: 40px;
+    background-color: #DFCF0E;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+main {
+    margin: 40px;
+    width: 1200px;
+    height: 280px;
+    border: 40px black solid;
+}
+
+.caja_izquierda {
+    width: 780px;
+    height: 280px;
+    position: relative;
+    background-color: #253940;
+    border-right: 20px black solid;
+    float: left; 
+}
+
+.caja1 {
+    width: 330px;
+    height: 40px;
+    background-color: #6074BF;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.caja2 {
+    width: 330px;
+    height: 40px;
+    background-color: #6074BF;
+    position: absolute;
+    top: 120px;
+    left: 40px;
+}
+
+.caja3 {
+    width: 330px;
+    height: 40px;
+    background-color: #6074BF;
+    position: absolute;
+    top: 40px;
+    left: 410px;
+}
+
+.caja4 {
+    width: 330px;
+    height: 40px;
+    background-color: #6074BF;
+    position: absolute;
+    top: 120px;
+    left: 410px;
+}
+
+.caja5 {
+    width: 700px;
+    height: 40px;
+    background-color: #6074BF;
+    position: relative;
+    top: 200px;
+    left: 40px;
+}
+
+.caja_derecha {
+    margin-left: 800px;
+    width: 380px;
+    height: 280px;
+    background-color: #DF2B0E;
+    border-left: 20px black solid; 
+    position: relative;
+}
+
+.cajax {
+    width: 300px;
+    height: 40px;
+    background-color: #DFCF0E;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.cajaj {
+    width: 300px;
+    height: 40px;
+    background-color: #DFCF0E;
+    position: absolute;
+    top: 120px;
+    left: 40px;
+}
+
+footer {
+    margin: 40px;
+    width: 1200px;
+    height: 40px;
+    background-color:#BD9C08;
+    border: 40px black solid;
+}
