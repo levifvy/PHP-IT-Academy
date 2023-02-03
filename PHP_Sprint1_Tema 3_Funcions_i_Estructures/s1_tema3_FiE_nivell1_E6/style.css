@@ -1,0 +1,24 @@
+.container {
+    background-color: #ced6e0;
+}
+
+.gameBox {
+    display: flex;
+    width: 14.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: 0.2rem #737495 solid;
+    background-color: #000;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.resultats {
+    justify-content: center;
+    text-align: center;
+    font-size: large;
+}
+
+

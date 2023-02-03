@@ -1,0 +1,13 @@
+.box {
+    background-color: #778ca3;
+}
+
+.line {
+    background-color: 1.5rem #4b6584 solid;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

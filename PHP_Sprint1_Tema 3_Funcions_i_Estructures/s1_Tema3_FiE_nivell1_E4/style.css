@@ -1,0 +1,16 @@
+.box {
+    display: flex;
+    width: 60%;
+    height: 6rem;
+    border: 3px #737495 solid;
+    border-radius: 1em;
+    background-color: #636e72;
+    color: #fff;    
+    flex-wrap: wrap;
+    font-size: 1rem;
+    text-align: center;
+    text-justify:distribute-all-lines;
+    
+    
+    
+}
