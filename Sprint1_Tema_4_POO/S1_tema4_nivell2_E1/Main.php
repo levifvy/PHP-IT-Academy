@@ -1,4 +1,5 @@
 <title>S1_tema4_nivell1_E2</title>
+<h1>Jugant als daus</h1><br/>
 <?php
 require 'PokerDice.php';
 
