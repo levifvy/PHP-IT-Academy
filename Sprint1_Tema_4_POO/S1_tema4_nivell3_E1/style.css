@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+.boxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #55efc4;
+    border: 2px #887472 solid;
+    border-radius: 1em;
+    padding-bottom: 1em;
+    position: relative;
+}
+
+.boxComptaSaldo {
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background-color: #55efc4;
+    color: #887472;
+    font-size: 1rem;
+}
+
+.inputSaldo {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    padding: 5px;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background-color: #55efc4;
+    border-radius: 1em;
+    border: 2px #887472 solid;
+}
+
+.boxOperacions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #887472;
+    border: 2px #887472 solid;
+    border-radius: 1em;
+    padding: 1em;
+    padding-top: 0%;
+}
+
+.line {
+    border: 2px #887472 solid;
+}
+
+.formBox {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color: #55efc4;
+    display: flex;
+}
+
+
+.inputGrup {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;    
+}
+
+.inputImprimir {
+    width: 250px;
+    padding: 15px 15px 15px 50px;
+    font-size: 16px;
+    background-color: #887472;
+}
+
+.icon {
+    font-size: 30px;
+    position: absolute;
+    left: 50px;
+    border: 2px #887472 solid;
+    border-radius: 2px;
+}
+
+.tipus {
+    flex-direction: row;
+}
+.anarBox {
+    background-color: #55efc4;
+    border: 3px #000 solid;
+    border-radius: 2px;
+}
