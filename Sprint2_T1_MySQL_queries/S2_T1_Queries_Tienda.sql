@@ -27,3 +27,33 @@ SELECT nombre, precio, ROUND(precio, 1) FROM producto;
 
 -- 10. Llista els noms i els preus de tots els productes de la taula "producto", truncant el valor del preu per a mostrar-lo sense cap xifra decimal.
 SELECT nombre, TRUNCATE(precio,0) FROM producto;
+
+-- 11. Llista el codi dels fabricants que tenen productes en la taula "producto".
+SELECT fabricante.codigo FROM fabricante JOIN producto ON fabricante.codigo = producto.codigo_fabricante;
+
+-- 12. Llista el codi dels fabricants que tenen productes en la taula "producto", eliminant els codis que apareixen repetits.
+SELECT DISTINCT fabricante.codigo FROM fabricante JOIN producto ON fabricante.codigo = producto.codigo_fabricante;
+
+-- 13. Llista els noms dels fabricants ordenats de manera ascendent.
+SELECT nombre FROM fabricante ORDER BY nombre ASC;
+
+-- 14. Llista els noms dels fabricants ordenats de manera descendent.
+SELECT nombre FROM fabricante ORDER BY nombre DESC;
+
+-- 15. Llista els noms dels productes ordenats, en primer lloc, pel nom de manera ascendent i, en segon lloc, pel preu de manera descendent.
+SELECT nombre, precio FROM producto ORDER BY nombre ASC, precio DESC;
+
+-- 16. Retorna una llista amb les 5 primeres files de la taula "fabricante".
+SELECT * FROM fabricante LIMIT 5;
+
+-- 17. Retorna una llista amb 2 files a partir de la quarta fila de la taula "fabricante". La quarta fila també s'ha d'incloure en la resposta.
+SELECT * FROM fabricante LIMIT 2 OFFSET 3;
+
+-- 18. Llista el nom i el preu del producte més barat. (Utilitza solament les clàusules ORDER BY i LIMIT). NOTA: Aquí no podries usar MIN(preu), necessitaries GROUP BY
+SELECT nombre, precio FROM producto ORDER BY precio ASC LIMIT 1;
+
+-- 19. Llista el nom i el preu del producte més car. (Fes servir solament les clàusules ORDER BY i LIMIT). NOTA: Aquí no podries usar MAX(preu), necessitaries GROUP BY.
+SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+
+-- 20. Llista el nom de tots els productes del fabricant el codi de fabricant del qual és igual a 2.
+SELECT nombre FROM producto WHERE codigo_fabricante = 2;
