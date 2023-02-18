@@ -27,6 +27,5 @@ SELECT a.nombre AS Nom_de_Assignature , cs.anyo_inicio, cs.anyo_fin FROM asignat
 SELECT DISTINCT d.nombre FROM departamento d INNER JOIN profesor pro ON d.id = pro.id_departamento INNER JOIN asignatura a ON pro.id_profesor = a.id_profesor INNER JOIN grado g ON a.id_grado = g.id WHERE g.id = 4;
 
 -- 9. Retorna un llistat amb tots els/les alumnes que s'han matriculat en alguna assignatura durant el curs escolar 2018/2019.
-SELECT DISTINCT CONCAT(p.nombre," ",p.apellido1," ",p.apellido2) AS Alumnes FROM persona p INNER JOIN alumno_se_matricula_asignatura al_m ON p.id = al_m.id_alumno INNER JOIN asignatura a ON al_m.id_asignatura = a.id
- INNER JOIN curso_escolar cs ON  al_m.id_curso_escolar = cs.id WHERE cs.anyo_inicio = 2018 and cs.anyo_fin = 2019;
+SELECT DISTINCT CONCAT(p.nombre," ",p.apellido1," ",p.apellido2) AS Alumnes FROM persona p INNER JOIN alumno_se_matricula_asignatura al_m ON p.id = al_m.id_alumno INNER JOIN asignatura a ON al_m.id_asignatura = a.id INNER JOIN curso_escolar cs ON  al_m.id_curso_escolar = cs.id WHERE cs.anyo_inicio = 2018 and cs.anyo_fin = 2019;
 
