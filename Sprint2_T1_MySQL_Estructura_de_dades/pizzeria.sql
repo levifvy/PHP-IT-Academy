@@ -14,6 +14,15 @@ CREATE TABLE clientes (
     PRIMARY KEY (id_cliente)
 );
 
+CREATE TABLE tiendas (
+    id_tienda INT NOT NULL AUTO_INCREMENT,
+    direccion VARCHAR(100) NOT NULL,
+    codigo_postal VARCHAR(10) NOT NULL,
+    localidad VARCHAR(50) NOT NULL,
+    provincia VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_tienda)
+);
+
 CREATE TABLE pedidos (
     id_pedido INT NOT NULL AUTO_INCREMENT,
     fecha_hora DATETIME NOT NULL,
@@ -23,17 +32,22 @@ CREATE TABLE pedidos (
     cantidad_bebidas INT NOT NULL DEFAULT 0,
     precio_total DECIMAL(5,2) NOT NULL,
     id_cliente INT NOT NULL,
+    id_tienda INT NOT NULL,
     PRIMARY KEY (id_pedido),
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
+    FOREIGN KEY (id_tienda) REFERENCES tiendas(id_tienda)
 );
+
 
 CREATE TABLE productos (
     id_producto INT NOT NULL AUTO_INCREMENT,
+    id_pedido INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     descripcion TEXT NOT NULL,
     imagen VARCHAR(100) NOT NULL,
     precio DECIMAL(5,2) NOT NULL,
-    PRIMARY KEY (id_producto)
+    PRIMARY KEY (id_producto),
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
 );
 
 CREATE TABLE hamburguesas (
@@ -65,15 +79,6 @@ CREATE TABLE pizzas (
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
-CREATE TABLE tiendas (
-    id_tienda INT NOT NULL AUTO_INCREMENT,
-    direccion VARCHAR(100) NOT NULL,
-    codigo_postal VARCHAR(10) NOT NULL,
-    localidad VARCHAR(50) NOT NULL,
-    provincia VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id_tienda)
-);
-
 CREATE TABLE empleados (
     id_empleado INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -91,8 +96,6 @@ CREATE TABLE entregas (
     id_entrega INT NOT NULL AUTO_INCREMENT,
     fecha_hora DATETIME NOT NULL,
     id_repartidor INT NOT NULL,
-    id_pedido INT NOT NULL,
     PRIMARY KEY (id_entrega),
-    FOREIGN KEY (id_repartidor) REFERENCES empleados(id_empleado),
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+    FOREIGN KEY (id_repartidor) REFERENCES empleados(id_empleado)
 );
