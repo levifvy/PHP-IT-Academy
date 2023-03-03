@@ -59,3 +59,39 @@ db.restaurants.find({ borough: { $nin: [ "Staten Island", "Queens", "Bronx", "Br
 
 /*20. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que aconsegueixin una nota menor que 10.*/
 db.restaurants.find({ "grades.score": { $lt: 10 } }, { restaurant_id: 1, name:1, borough:1, cuisine:1})
+
+/*21. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que preparen marisc ('seafood') excepte si són 'American ', 'Chinese' o el name del restaurant comença amb lletres 'Wil'.*/
+db.restaurants.find({ cuisine: "Seafood", $nor: [{ cuisine: "American" },{ cuisine: "Chinese" },{ name: /^Wil/i } ] },{ restaurant_id: 1, name: 1, borough: 1, cuisine: 1 }).pretty()
+
+/*22. Escriu una consulta per trobar el restaurant_id, name i grades per a aquells restaurants que aconsegueixin un grade de "A" i un score d'11 amb un ISODate "2014-08-11T00:00:00Z".*/
+db.restaurants.find({ grades: { $elemMatch: { grade: "A", score: 11, date: ISODate("2014-08-11T00:00:00Z")}}},{ restaurant_id: 1, name: 1, grades: 1 }).pretty()
+
+/*23. Escriu una consulta per trobar el restaurant_id, name i grades per a aquells restaurants on el 2n element de l'array de graus conté un grade de "A" i un score 9 amb un ISODate "2014-08-11T00:00:00Z".*/
+db.restaurants.find({"grades.1.grade": "A","grades.1.score": 9,"grades.1.date": ISODate("2014-08-11T00:00:00Z")},{ restaurant_id: 1, name: 1, grades: 1 }).pretty()
+
+/*24. Escriu una consulta per trobar el restaurant_id, name, adreça i ubicació geogràfica per a aquells restaurants on el segon element de l'array coord conté un valor entre 42 i 52.*/
+db.restaurants.find({ "address.coord.1": { $gt: 42, $lt: 52 } },{ restaurant_id: 1, name: 1, "address.coord": 1 }).pretty()
+
+/*25. Escriu una consulta per organitzar els restaurants per nom en ordre ascendent.*/
+db.restaurants.find().sort({ name: 1 }).pretty()
+
+/*26. Escriu una consulta per organitzar els restaurants per nom en ordre descendent.*/
+db.restaurants.find().sort({ name: -1 }).pretty()
+
+/*27. Escriu una consulta per organitzar els restaurants pel nom de la cuisine en ordre ascendent i pel barri en ordre descendent.*/
+db.restaurants.find().sort({ cuisine: 1, borough: -1 }).pretty()
+
+/*28. Escriu una consulta per saber si les direccions contenen el carrer.*/
+db.restaurants.find({ "address.street": { $exists: true } }).pretty()
+
+/*29. Escriu una consulta que seleccioni tots els documents en la col·lecció de restaurants on els valors del camp coord és de tipus Double.*/
+db.restaurants.find({ "address.coord": { $type: "double" } }).pretty().count()
+
+/*30. Escriu una consulta que seleccioni el restaurant_id, name i grade per a aquells restaurants que retornen 0 com a residu després de dividir algun dels seus score per 7.*/
+db.restaurants.find({ "grades.score": { $mod: [7, 0] } }, { restaurant_id: 1, name: 1, "grades.grade": 1, _id: 0 }).pretty()
+
+/*31. Escriu una consulta per trobar el name de restaurant, borough, longitud, latitud i cuisine per a aquells restaurants que contenen 'mon' en algun lloc del seu name.*/
+db.restaurants.find({name: {$regex: /mon/i}}, {name: 1, borough: 1, "address.coord": 1, cuisine: 1, _id: 0}).pretty()
+
+/*32. Escriu una consulta per trobar el name de restaurant, borough, longitud, latitud i cuisine per a aquells restaurants que contenen 'Mad' com a primeres tres lletres del seu name.*/
+db.restaurants.find({name: {$regex: /^Mad/}}, {name: 1, borough: 1, "address.coord": 1, cuisine: 1, _id: 0}).pretty()
