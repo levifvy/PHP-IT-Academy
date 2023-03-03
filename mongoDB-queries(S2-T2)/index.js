@@ -44,3 +44,18 @@ db.restaurants.find({name: { $regex: /^Wil/ }}, {restaurant_id: 1, name: 1, boro
 
 /*15. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que contenen 'ces' en les últimes tres lletres en el seu nom.*/
 db.restaurants.find({ name: { $regex: /ces$/ }}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0}).pretty()
+
+/*16. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que contenen 'Reg' en qualsevol lloc del seu nom.*/
+db.restaurants.find({name: { $regex: /Reg/ }}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }).pretty()
+
+/*17. Escriu una consulta per trobar els restaurants que pertanyen al Bronx i preparen plats Americans o xinesos.*/
+db.restaurants.find({ borough: "Bronx", cuisine: { $in: [ "American", "Chinese" ] }}).pretty()
+
+/*18. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per aquells restaurants que pertanyen a Staten Island, Queens, Bronx o Brooklyn.*/
+db.restaurants.find({ borough: { $in: [ "Staten Island", "Queens", "Bronx", "Brooklyn" ] }}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0}).pretty()
+
+/*19. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que NO pertanyen a Staten Island, Queens, Bronx o Brooklyn.*/
+db.restaurants.find({ borough: { $nin: [ "Staten Island", "Queens", "Bronx", "Brooklyn" ] }}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0}).pretty()
+
+/*20. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que aconsegueixin una nota menor que 10.*/
+db.restaurants.find({ "grades.score": { $lt: 10 } }, { restaurant_id: 1, name:1, borough:1, cuisine:1})
