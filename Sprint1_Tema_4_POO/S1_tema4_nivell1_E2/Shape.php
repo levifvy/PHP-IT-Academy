@@ -1,14 +1,16 @@
 <?php
-require 'Triangle.php';
-require 'Rectangle.php';
 
 class Shape {
-    protected $ample;
-    protected $alt;
+    protected float $ample;
+    protected float $alt;
 
-    public function __construct($ample, $alt) {
-        $this->ample = $ample;
-        $this->alt = $alt;
-        }
-    }
+function __construct(float $ample, float $alt){
+    $this->ample = $ample;
+    $this->alt = $alt;
+}
+
+function calcularArea(){
+    return "El area de la figura es: ";
+}
+}
 ?>

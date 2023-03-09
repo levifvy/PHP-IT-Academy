@@ -1,20 +1,23 @@
 <?php
 class Employee {
-    private $name;
-    private $salary;
-    
-    public function __construct($name, $salary) {
-        $this->name = $name;
-        $this->salary = $salary;
+    private string $nom;
+    private float $sou;
+
+    function __construct(string $nom, float $sou){
+        $this->nom = $nom;
+        $this->sou = $sou;
     }
-    
-    public function printInfo() {
-        if ($this->salary > 6000) {
-            echo "$this->name ha de pagar impostos.";
-        } else {
-            echo "$this->name no ha de pagar impostos.";
+
+    public function initialize() {
+        return "El empleado ".$this->nom." tiene un sueldo de ".$this->sou."€\n";
+    }
+
+    public function print(){
+        if ($this->sou < 6000) {
+            echo $this->nom." No paga impuestos\n";
+        }else{
+            echo $this->nom." Si paga impuestos.\n";
         }
     }
 }
-
 ?>
