@@ -1,13 +1,19 @@
 <?php 
+enum Position {
+    case D;
+    case DB;
+    case DC;
+    case C;
+} 
 class Features {
     private string $name;
     private int $age;
     private int $goals;
     private int $fouls_made;
     private int $fouls_received;
-    private string $position;
+    private Position $position;
 
-    function __construct(string $name, int $age, int $goals, int $fouls_made, int $fouls_received, string $position){
+    function __construct(string $name, int $age, int $goals, int $fouls_made, int $fouls_received, Position $position){
         $this->name=$name;
         $this->age=$age;
         $this->goals=$goals;

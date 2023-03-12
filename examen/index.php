@@ -2,11 +2,11 @@
 include'Features.php';
 
 $players = array(
-  new Features("Cavani",23,70,2,67,"DB"),
-  new Features("Sotil",25,112,7,18,"D"),
-  new Features("Rivaldo",36,46,5,23,"C"),
-  new Features("Forlan",29,90,3,60,"DB"),
-  new Features("Drogua",19,33,4,78,"DC"),
+  new Features("Cavani",23,70,2,67, Position::D),
+  new Features("Sotil",25,112,7,18, Position::D),
+  new Features("Rivaldo",36,46,5,23, Position::C),
+  new Features("Forlan",29,90,3,60, Position::DB),
+  new Features("Drogua",19,33,4,78, Position::DC),
 );
 
 echo "<pre>\n";
