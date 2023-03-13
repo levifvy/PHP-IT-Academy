@@ -5,7 +5,7 @@ enum Position {
     case Halfback_Midfielder;
     case Center_Forward;
 } 
-Position::cases();
+
 class Players {
     private string $name;
     private int $age;
@@ -44,7 +44,7 @@ class Players {
 
     public function getPosition()
     {
-        return $this->position::cases();
+        return $this->position->name;
     }
 }
 ?>

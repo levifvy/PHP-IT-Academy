@@ -15,10 +15,10 @@ $listat_faltas_realizadas_2 = array();
 $listat_faltas_recibidas_3 = array();
 
 
-foreach($players as $Players) {
-array_push($listat_goles_1, $Players->getGoals());
-array_push($listat_faltas_realizadas_2, $Players->getFouls_made());
-array_push($listat_faltas_recibidas_3, $Players->getFouls_received());
+foreach($players as $player) {
+array_push($listat_goles_1, $player->getGoals());
+array_push($listat_faltas_realizadas_2, $player->getFouls_made());
+array_push($listat_faltas_recibidas_3, $player->getFouls_received());
 }
 $max_goals = (max($listat_goles_1));
 $min_fouls_made = (min($listat_faltas_realizadas_2));
@@ -26,25 +26,27 @@ $max_fouls_received = (max($listat_faltas_recibidas_3));
 
 
 //1
-foreach ($players as $Players) {
-  if ($Players->getGoals() == $max_goals) {
-    echo $Players->getName()." es el jugador que hizo la maxima cantidad de anotaciones con ".$max_goals." goles.\n";
+foreach ($players as $player) {
+  if ($player->getGoals() == $max_goals) {
+    echo $player->getName()." es el jugador que hizo la maxima cantidad de anotaciones con ".$max_goals." goles.\n";
   }
 } 
 //2
-foreach ($players as $Players) {
-  if ($Players->getFouls_made() == $min_fouls_made) {
-    echo $Players->getName()." es el jugador que hizo la minima cantidad de faltas con ".$min_fouls_made." faltas realizadas.\n";
+foreach ($players as $player) {
+  if ($player->getFouls_made() == $min_fouls_made) {
+    echo $player->getName()." es el jugador que hizo la minima cantidad de faltas con ".$min_fouls_made." faltas realizadas.\n";
   }
 }
 //3
-foreach ($players as $Players) {
-  if ($Players->getFouls_received() == $max_fouls_received) {
-    echo $Players->getName()." es el jugador que recibio la maxima cantidad de faltas con ".$max_fouls_received." faltas recibidas.\n";
+foreach ($players as $player) {
+  if ($player->getFouls_received() == $max_fouls_received) {
+    echo $player->getName()." es el jugador que recibio la maxima cantidad de faltas con ".$max_fouls_received." faltas recibidas.\n";
   }
 }
 //4
-
+foreach ($players as $player) {
+  echo "\n".($player->getName())." tiene la posicion de ".($player->getPosition()).".";
+}
 
 echo "</pre>";
 
