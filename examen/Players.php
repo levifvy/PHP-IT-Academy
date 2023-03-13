@@ -1,10 +1,11 @@
 <?php 
 enum Position {
-    case D;
-    case DB;
-    case DC;
-    case C;
+    case Defensive_Midfielder;
+    case Back_Defender;
+    case Halfback_Midfielder;
+    case Center_Forward;
 } 
+Position::cases();
 class Players {
     private string $name;
     private int $age;
@@ -39,6 +40,11 @@ class Players {
     public function getFouls_received()
     {
         return $this->fouls_received;
+    }
+
+    public function getPosition()
+    {
+        return $this->position::cases();
     }
 }
 ?>
