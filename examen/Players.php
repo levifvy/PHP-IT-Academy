@@ -5,7 +5,7 @@ enum Position {
     case DC;
     case C;
 } 
-class Features {
+class Players {
     private string $name;
     private int $age;
     private int $goals;
