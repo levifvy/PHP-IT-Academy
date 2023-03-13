@@ -9,11 +9,9 @@ $players = array(
   new Players("Drogua",19,33,4,78, Position::Center_Forward),
 );
 
-echo "<pre>\n";
 $listat_goles_1 = array();
 $listat_faltas_realizadas_2 = array();
 $listat_faltas_recibidas_3 = array();
-
 
 foreach($players as $player) {
 array_push($listat_goles_1, $player->getGoals());
@@ -23,8 +21,6 @@ array_push($listat_faltas_recibidas_3, $player->getFouls_received());
 $max_goals = (max($listat_goles_1));
 $min_fouls_made = (min($listat_faltas_realizadas_2));
 $max_fouls_received = (max($listat_faltas_recibidas_3));
-
-
 //1
 foreach ($players as $player) {
   if ($player->getGoals() == $max_goals) {
@@ -47,7 +43,4 @@ foreach ($players as $player) {
 foreach ($players as $player) {
   echo "\n".($player->getName())." tiene la posicion de ".($player->getPosition()).".";
 }
-
-echo "</pre>";
-
 ?>

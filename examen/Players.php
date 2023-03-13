@@ -26,22 +26,18 @@ class Players {
     {
         return $this->name;
     }
-
     public function getGoals()
     {
         return $this->goals;
     }
-
     public function getFouls_made()
     {
         return $this->fouls_made;
     }
-
     public function getFouls_received()
     {
         return $this->fouls_received;
     }
-
     public function getPosition()
     {
         return $this->position->name;
