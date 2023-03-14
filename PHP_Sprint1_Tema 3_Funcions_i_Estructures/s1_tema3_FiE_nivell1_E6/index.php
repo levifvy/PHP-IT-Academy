@@ -15,31 +15,21 @@
         <p>- Charlie et mossegarà el dit exactament el 50% del temps.</p>
     </fieldset>
     <hr>
-
     <?php
-        $numRandom = rand(0,100);
-
-        Function isBitten($mossegar){
-            if ($mossegar == 50) {
+        $numRandom = rand(0,1);
+        Function isBitten($numRandom){
+            if ($numRandom == 1) {
                 $resposta = "True";
             }else {
                $resposta = "False";
             }
             echo $resposta;
         }
-
-?>
+    ?>
     <form action="index.php" method="get">
-        <input class="gameBox" type="submit" name="findnumber" value="Jugar" ><br>
-        <label for="fnumber">
-            <h3>Probabilitat obtinguda (%): </h3>
-        </label>
-        <input class="resultats" type="text" name="fnumber" value="<?php
-            echo $numRandom;
-            ?>" placeholder="Cercando una probabilitat"><br><br>
-    
+        <input class="gameBox" type="submit" name="findnumber" value="Jugar" >
     </form>
-   
+    <hr>
     <form name="numeros" method="get" action="index.php">
         <h3>El meu dit serà mossegat per Charlie: ...</h3>
         <input class ="resultats" type="text" value="<?php isBitten($numRandom) ?>">

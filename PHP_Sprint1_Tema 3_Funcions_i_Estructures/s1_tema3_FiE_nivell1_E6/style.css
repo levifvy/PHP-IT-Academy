@@ -1,5 +1,5 @@
 .container {
-    background-color: #ced6e0;
+    background-color: #55efc4;
 }
 
 .gameBox {
@@ -16,9 +16,10 @@
 }
 
 .resultats {
+    display: flex;
+    width: 20%;
     justify-content: center;
     text-align: center;
+    border: 2px #000 solid;
     font-size: large;
 }
-
-
