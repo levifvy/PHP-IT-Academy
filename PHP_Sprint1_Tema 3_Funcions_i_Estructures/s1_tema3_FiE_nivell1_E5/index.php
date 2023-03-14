@@ -11,21 +11,19 @@
     <fieldset>
         <h2>Grau d'un estudiant</h2>
         <p>Escriure una funció per verificar el grau d'un/a estudiant d'acord amb la nota.<br/><br/>Condicions:<br/>- Si la nota és 60% o més, el grau hauria de ser Primera Divisió.<br/>- Si la nota està entre 45% i 59%, el grau hauria de ser Segona Divisió.<br/>- Si la nota està entre 33% to 44%, el grau hauria de ser Tercera Divisió.<br/>- Si la nota és menor a 33%, l'estudiant reprovarà.<br/></p>
-    </fieldset><br/><br/>
+    </fieldset><br/>
     <form name="porcentajes" method="get" action="index.php" >
         <label for="fname">Ingressar nota: </label>
-        <input type="number" id="fname" name="fname" value="" placeholder="Indicar un percentatge en numeros" required>&nbsp&nbsp&nbsp&nbsp
-        <input type="submit" name="findpercentage" value="verificar el grau">
+        <input type="number" id="fname" name="fname" value="" placeholder="Indicar un percentatge en numeros" required>
+        <input type="submit" name="findpercentage" value="verificar grau">
     </form>
     <hr style="border: 2px #84817a solid">
     <?php
-       
         if(isset($_GET['findpercentage'])){
                     $note = $_GET['fname'];
                 }
-                
         function grauEstudiant($note){
-            if($note > 60) {
+            if($note >= 60) {
                 $resposta = "Primera Divisio";
             }elseif ($note>= 45) {
                 $resposta = "Segona Divisio";
