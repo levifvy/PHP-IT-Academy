@@ -1,11 +1,8 @@
 .container {
     background-color: #55efc4;
 }
-
 .gameBox {
-    display: flex;
-    width: 14.5rem;
-    height: 3rem;
+    display: inline-flex;
     border-radius: 0.5rem;
     border: 0.2rem #737495 solid;
     background-color: #000;
@@ -14,12 +11,37 @@
     text-align: center;
     font-size: 1.5em;
 }
-
-.resultats {
-    display: flex;
-    width: 20%;
-    justify-content: center;
-    text-align: center;
-    border: 2px #000 solid;
-    font-size: large;
+.bitten {
+    display: inline-flex;
+	background-color: #d63031;
+	color: #000;
+	padding: 3em;
+	justify-content: center;
+	text-align: center;
+	border: 4px #e84393 solid;
+	font-size: xx-large;
+	animation: blink 1s infinite;
+}
+.not-bitten {
+    
+    display: inline-flex;
+    background-color: #74b9ff;
+	color: #000;
+	padding: 3em;
+	justify-content: center;
+	text-align: center;
+	border: 4px #0984e3 solid;
+    border-radius: 1em;
+	font-size:xx-large;
+}
+@keyframes blink {
+    0% {
+        background-color: #d63031;
+    }
+    50% {
+        background-color: #dfe6e9;
+    }
+    100% {
+        background-color: #d63031;
+    }
 }

@@ -2,3 +2,10 @@
     background-color: #2d98da;
 
 }
+.hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    box-shadow: 0px 0.5px 0.5px #5F4D4B inset;
+  }
+  

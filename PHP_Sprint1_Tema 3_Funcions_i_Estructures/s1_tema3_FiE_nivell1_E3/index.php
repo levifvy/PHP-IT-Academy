@@ -7,42 +7,32 @@
     <title>s1_tema3_FiE_nivell1_E3</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #8DDDE5">
+<body style="background-color: #55efc4">
     <fieldset style="border: 2px #737495 solid;">
         <legend ><h2>Jugant a l'amagatall</h2></legend>
         <p>Imagina't que volem que compti fins a un nombre diferent de 10. Programa la funció perquè el final del compte estigui parametritzat.</p>
     </fieldset><br/><br/>
     <form action="index.php" method="get">
         <Label for="comptar">Vull comptar fins: </Label> 
-        <input type="number" id="comptar" name="final" value="" required placeholder="Ingressa un numero sencer">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="number" id="comptar" name="final" value="" required placeholder="Ingressa un numero sencer">
         <input style="border: 2px #737495 solid;" type="submit" name="boton" value="Comptar"><br/>
     </form><br/><br/>
     <hr style="border: 2px #737495 solid;"><br/>
-
-    <?php
-    if(isset($_GET['boton'])){
-    $n = $_GET['final'];
-    }
-    
-    function countTwo($n) {
-        for ($i = 1; $i <= $n; $i++) {
-          if ($i % 2 == 0) {
-            echo  $i . " ";
+      <?php
+        $number = 0;
+        if(isset($_GET['boton'])){
+          $number = $_GET['final'];
+        }
+        function countToNumber($number) {
+          for ($i = 1; $i <= $number; $i ++) {
+              echo $i ."\n";
           }
         }
-      }
-
-      if ($n % 2 != 0) {
-        $m = strval($n);
-      }elseif ($i % 2 == 0) {
-        $m = null;
-      }
-
-    ?>
-    <form action="index.php" method="get">
-        <h2>Resposta: </h2><br/>
-        <input class="box" type="text" name="gotit" 
-        value="<?php echo countTwo($n)." ".$m; ?>">
-    </form>
+      ?>
+    <div class="box">
+      <?php 
+        countToNumber($number);
+      ?>
+    </div>
 </body>
 </html>

@@ -1,0 +1,64 @@
+.box {
+    background-color: #fad390;
+}
+
+.line {
+    border: none;
+    height: 1.5px;
+    background-color: #ccc;
+    box-shadow: 0px 0.5px 1px #685f5f inset;
+}
+
+.pre_results {
+    display: inline-flex;
+    border-radius: 0.5rem;
+    padding: 1em;
+    border: 0.1rem #737495 solid;
+    background-color: transparent;
+    color: #000;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+}
+.subtotal {
+    display: inline-flex;
+    border-radius: 0.5rem;
+    padding: 1em;
+    background-color: transparent;
+    color: #000;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+}
+.results {
+    display: inline-flex;
+    padding: 1.5em;
+    border-radius: 0.5rem;
+    border: 0.2rem #737495 solid;
+    background-color: #000;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+}
+.add-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1B1464;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reset-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #EA2027;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

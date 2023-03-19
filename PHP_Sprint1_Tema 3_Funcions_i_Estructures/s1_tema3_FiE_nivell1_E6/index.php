@@ -16,24 +16,25 @@
     </fieldset>
     <hr>
     <?php
-        $numRandom = rand(0,1);
-        Function isBitten($numRandom){
-            if ($numRandom == 1) {
-                $resposta = "True";
+        Function isBitten(){
+            if (rand(0,1) == 1) {
+                $resposta = "TRUE";
             }else {
-               $resposta = "False";
+               $resposta = "FALSE";
             }
-            echo $resposta;
+            return $resposta;
         }
-    ?>
-    <form action="index.php" method="get">
-        <input class="gameBox" type="submit" name="findnumber" value="Jugar" >
-    </form>
-    <hr>
-    <form name="numeros" method="get" action="index.php">
-        <h3>El meu dit serà mossegat per Charlie: ...</h3>
-        <input class ="resultats" type="text" value="<?php isBitten($numRandom) ?>">
-    </form>
-
+    $value_from_isbitten = isBitten();//Para adornar con el CSS
+	$resultats_class = ( $value_from_isbitten == "TRUE") ? "bitten" : "not-bitten";
+    $string_class = substr($resultats_class, 0);
+	?>
+	<form action="index.php" method="get">
+		<input class="gameBox" type="submit" name="findnumber" value="PLAY GAME">
+	</form>
+	<hr>
+	<h2>El meu dit serà mossegat per Charlie: ...</h2>
+	<div class ="<?php echo $string_class ?>">
+		<?php echo $value_from_isbitten; ?>
+	</div>
 </body>
 </html>

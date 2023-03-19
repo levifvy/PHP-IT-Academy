@@ -1,16 +1,9 @@
 .box {
-    display: flex;
-    width: 60%;
-    height: 6rem;
+    display: inline-flex;
     border: 3px #737495 solid;
     border-radius: 1em;
     background-color: #000;
     color: #fff;    
-    flex-wrap: wrap;
     font-size: 1rem;
-    text-align: center;
-    text-justify:distribute-all-lines;
-    
-    
-    
+    text-justify: distribute-all-lines;
 }

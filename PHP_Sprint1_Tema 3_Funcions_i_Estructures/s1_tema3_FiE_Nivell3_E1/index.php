@@ -12,53 +12,41 @@
         <legend>
             <h2>La criba d'Eratòstenes</h2>
         </legend>
-        <p>La criba d'Eratòstenes és un algoritme pensat per a trobar nombres primers dins d'un interval donat. Basant-te en la informació de l'enllaç adjunt, implementa la criba d'Eratòstenes dins d'una funció, de tal forma que puguem invocar la funció per a un número concret.</p>
+        <p>La criba d'Eratòstenes és un algoritme pensat per a trobar nombres primers dins d'un interval donat.<br>Basant-te en la informació de l'enllaç adjunt, implementa la criba d'Eratòstenes dins d'una funció, de tal forma que puguem invocar la funció per a un número concret.</p>
     </fieldset>
     <hr>
     <form autocompleted action="index.php" method="get">
-        <label for="cribaEratostenes">Ingressar un numero: </label>
-        <input type="number" id="cribaEratostenes" name="criba" value=""  placeholder=" &nbsp&nbsp&nbsp&nbsp Numero sencer" required>&nbsp&nbsp
-        <input type="submit" name="process" value="Cercar numeros primers">
+        <label for="cribaEratostenes"><h3>Cercar numeros primers fins al: </h3></label>
+        <input type="number" id="cribaEratostenes" name="criba" value="2"  placeholder=" &nbsp&nbsp&nbsp&nbsp Numero sencer" min="2" required>
+        <input class="find_prime_numbers" type="submit" name="process" value="Anar">
     </form>
     <?php
-
-        if(isset($_GET['process'])){
-            $cercarPrimersFins = (int)($_GET['criba']);
-        }
-
+    $number = 0;
+       if(isset($_GET['process'])){
+           $number = (int)($_GET['criba']);
+       }
+    
         function cribaEratostenes($number) {
-            $numeros = array();
+            $prime_numbers = array();
+            $not_be_primes_numbers = array();
+        
             for ($i = 2; $i <= $number; $i++) {
-                $numeros[$i] = true;
-            }
-
-            for ($i = 2; $i < $number; $i++) {
-                if ($numeros[$i]) {
-                    for ($j = 2; $i * $j <= $number; $j ++) {
-                        $numeros[$i * $j] = false;
+                if (!in_array($i, $not_be_primes_numbers)) {
+                    $prime_numbers[] = $i;
+                    for ($j = $i * $i; $j <= $number; $j += $i) {
+                        $not_be_primes_numbers[] = $j;
                     }
                 }
             }
-
-            $primos = array();
-            for ($i = 2; $i <= $number; $i++) {
-                if ($numeros[$i] == true) {
-                $primos[] = $i;
-                }
-            }
-
-            return $primos;
+            return $prime_numbers;
         }
-        
-        $numbers = cribaEratostenes($cercarPrimersFins);
-        echo "<br/>";
-        echo "Hi ha ".count($numbers)." respostes.";
-        echo "<br/>";
-        echo "Els nombres primers fins a ".$cercarPrimersFins." son: ";
-        echo "<br/>";
-        echo "<br/>";
-        echo implode(", ", $numbers);
+   ?>
+    <hr>
+    <h2>Numeros primers trobats: </h2>
+    <div class="result">
+        <?php 
+            echo implode(", ",cribaEratostenes($number));
         ?>
-       
+    </div>
 </body>
 </html>

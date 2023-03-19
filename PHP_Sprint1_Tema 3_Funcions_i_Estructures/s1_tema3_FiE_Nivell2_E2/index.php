@@ -16,17 +16,18 @@
     </fieldset><br/>
     <form name="trucada" action="index.php" method="get">
         <label for="giveMetime" name="giveMetime"><h2>Minuts de trucada: </h2> </label>
-        <input type="text" name="giveMeValue" value="" placeholder="Ingressa un numero sencer" required>
+        <input type="number" name="giveMeValue" value="" placeholder="Ingressa un numero sencer" required min="0">
         <input type="submit" name="findTime" value="Calcular">
     </form>
     
     <?php
-
+        $time = 0;
         if(isset($_GET['findTime'])){
                 $time = $_GET['giveMeValue'];
         }
-
+        
         function callPrice($time){
+            $resposta = 0;
             if($time == 0) {
                 $resposta = 0;
             }elseif($time > 0 && $time <=3) {
@@ -37,12 +38,14 @@
         return $resposta;
 
         }
-
+        $price_in_euros =callPrice($time)/100;
+    
     ?>
     <hr class="line">
-    <form action="index.php" method="get" >
-        <h2>Resposta: </h2>
-        <input class="result" type="text" name="getPrice" value="<?php  echo callPrice($time)." cts."; ?>">&nbsp
-    </form>
+
+    <h2>Resposta: </h2>
+    <div class="result">
+    <?php  echo $price_in_euros." €."; ?>
+    </div> 
 </body>
 </html>

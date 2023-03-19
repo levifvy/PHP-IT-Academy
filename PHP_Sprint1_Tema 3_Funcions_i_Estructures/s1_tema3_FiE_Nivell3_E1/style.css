@@ -1,8 +1,29 @@
-* {
-    box-sizing: border-box;
-}
-
 .boxContainer {
     background-color: #55efc4;
+    
    
+}
+
+.find_prime_numbers {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1B1464;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result {
+    display: inline-flex;
+    padding: 1em;
+    border-radius: 0.5rem;
+    border: 0.2rem #737495 solid;
+    background-color: #000;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5em;
 }
