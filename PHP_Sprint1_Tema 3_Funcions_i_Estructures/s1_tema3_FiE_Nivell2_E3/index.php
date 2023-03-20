@@ -27,32 +27,16 @@ session_start();
     </div><br/>
     <?php
         if(isset($_POST['submit'])){
-            $xocolata = $_POST['xocolata'];
-            $xiclets = $_POST['xiclets'];
-            $caramels = $_POST['caramels'];
-
-            if(!isset($_SESSION['total'])) {
-                $_SESSION['total'] = 0;
-            }
-            $_SESSION['total'] += (1 * $xocolata) + (0.5 * $xiclets) + (1.5 * $caramels); 
-
-            if(!isset($_SESSION['xocolata'])) {
-                $_SESSION['xocolata'] = 0;
-            }
-            if(!isset($_SESSION['xiclets'])) {
-                $_SESSION['xiclets'] = 0;
-            }
-            if(!isset($_SESSION['caramels'])) {
-                $_SESSION['caramels'] = 0;
-            }
-
-            $_SESSION['xocolata'] += $xocolata;
-            $_SESSION['xiclets'] += $xiclets;
-            $_SESSION['caramels'] += $caramels;
-            
+            $_SESSION['xocolata'] += $_POST['xocolata']?? 0;
+            $_SESSION['xiclets'] += $_POST['xiclets']?? 0;
+            $_SESSION['caramels'] += $_POST['caramels']?? 0;
         }
-        function sumValuesFromProducts(){
-            return $_SESSION['xocolata']." xocolates, ".$_SESSION['xiclets']." de xiclets i ".$_SESSION['caramels']." de caramels = ".(1 * $_SESSION['xocolata'])." + ".(0.5 * $_SESSION['xiclets'] )." + ".(1.5 *  $_SESSION['caramels']);
+        function getTotalPrice($chocolate, $gum, $candy){
+            $_SESSION['total'] = ((1 * $chocolate) + (0.5 * $gum) + (1.5 * $candy))?? 0;
+            return $_SESSION['total'];
+        }
+        function sumValuesFromProducts($chocolate, $gum, $candy){
+            return $chocolate." xocolates, ".$gum." de xiclets i ".$candy." de caramels = ".(1 * $chocolate)." + ".(0.5 * $gum)." + ".(1.5 * $candy);
         }
         
         if(isset($_POST['reset'])){
@@ -61,20 +45,19 @@ session_start();
         }
 
         if(isset($_SESSION['total'])):
-            
-            
+
     ?>
     <hr class="line">
     <div class="subtotal">
         <?php 
-           echo "<b>Subtotal: </b>&nbsp".sumValuesFromProducts();
+           echo "<b>Subtotal: </b>&nbsp".sumValuesFromProducts($_SESSION['xocolata'], $_SESSION['xiclets'] += $_POST['xiclets'], $_SESSION['caramels']);
         ?>
     </div>
     <hr class="line">
     <h2>TOTAL:</h2>
     <div class="results">
         <?php 
-            echo $_SESSION['total']." €.";
+            echo getTotalPrice($_SESSION['xocolata'], $_SESSION['xiclets'] += $_POST['xiclets'], $_SESSION['caramels'])." €.";
         ?>
     </div>
     <?php endif; ?>
