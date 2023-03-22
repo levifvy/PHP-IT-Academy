@@ -1,46 +1,49 @@
 <?php 
-enum Position {
-    case Defensive_Midfielder;
-    case Back_Defender;
-    case Halfback_Midfielder;
-    case Center_Forward;
-} 
+include'Player.php';
 
-class Players {
-    private string $name;
-    private int $age;
-    private int $goals;
-    private int $fouls_made;
-    private int $fouls_received;
-    private Position $position;
+class Players{
+    private $players = [];
 
-    function __construct(string $name, int $age, int $goals, int $fouls_made, int $fouls_received, Position $position){
-        $this->name=$name;
-        $this->age=$age;
-        $this->goals=$goals;
-        $this->fouls_made=$fouls_made;  
-        $this->fouls_received=$fouls_received;
-        $this->position=$position;
+    public function addPlayer(Player $player) {
+        $this->players[] = $player;
     }
-    public function getName()
-    {
-        return $this->name;
+    public function getPlayerWithMostGoals() {
+        $maxGoals = 0;
+        $maxGoalsPlayer = null;
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->players[$i]->getGoalsScored() > $maxGoals) {
+                $maxGoals = $this->players[$i]->getGoalsScored();
+                $maxGoalsPlayer = $this->players[$i]->getName();
+            }
+        }
+        return $maxGoalsPlayer." is the best player, with ".$maxGoals." goals made.";
     }
-    public function getGoals()
-    {
-        return $this->goals;
+    public function getPlayerWithMostFoulsReceived() {
+        $maxFoulsReceived = 0;
+        $maxFoulsReceivedPlayer = null;
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->players[$i]->getFoulsReceived() > $maxFoulsReceived) {
+                $maxFoulsReceived = $this->players[$i]->getFoulsReceived();
+                $maxFoulsReceivedPlayer = $this->players[$i]->getName();
+            }
+        }
+        return $maxFoulsReceivedPlayer." is the player more affected with ".$maxFoulsReceived." fouls received.";
     }
-    public function getFouls_made()
-    {
-        return $this->fouls_made;
+    public function getPlayerWithLeastFoulsCommitted() {
+        $minFoulsCommitted = PHP_INT_MAX;
+        $minFoulsCommittedPlayer = null;
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->players[$i]->getFoulsCommitted() < $minFoulsCommitted) {
+                $minFoulsCommitted = $this->players[$i]->getFoulsCommitted();
+                $minFoulsCommittedPlayer = $this->players[$i]->getName();
+            }
+        }
+        return $minFoulsCommittedPlayer.$minFoulsCommitted." fouls, has the fewest fouls made.";
     }
-    public function getFouls_received()
-    {
-        return $this->fouls_received;
-    }
-    public function getPosition()
-    {
-        return $this->position->name;
-    }
+    // public function showPositions() {
+    //     foreach ($this->players as $player) {
+    //         echo $player->getName() . ": " . $player->getPosition().".".PHP_EOL;
+    //     }
+    // }
 }
 ?>

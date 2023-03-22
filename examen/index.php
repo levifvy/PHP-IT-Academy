@@ -1,46 +1,34 @@
 <?php 
 include'Players.php';
+// create players:
+$player1 = new Player("Lionel Messi", 34, 35, 10, 100, Position::Defensive_Midfielder);
+$player2 = new Player("Cristiano Ronaldo", 36, 15, 12, 45, Position::Center_Forward);
+$player3 = new Player("Virgil van Dijk", 30, 3, 5, 12, Position::Halfback_Midfielder);
+$player4 = new Player("Kevin De Bruyne", 30, 8, 22, 32, Position::Back_Defender);
+$player5 = new Player("N'Golo Kanté", 30, 80, 20, 15, Position::Center_Forward);
 
-$players = array(
-  new Players("Cavani",23,70,2,67, Position::Defensive_Midfielder),
-  new Players("Sotil",25,112,7,18, Position::Defensive_Midfielder),
-  new Players("Rivaldo",36,46,5,23, Position::Halfback_Midfielder),
-  new Players("Forlan",29,90,3,60, Position::Back_Defender),
-  new Players("Drogua",19,33,4,78, Position::Center_Forward),
-);
+//add players to collection:
+$players = new Players();
+$players->addPlayer($player1);
+$players->addPlayer($player2);
+$players->addPlayer($player3);
+$players->addPlayer($player4);
+$players->addPlayer($player5);
 
-$listat_goles_1 = array();
-$listat_faltas_realizadas_2 = array();
-$listat_faltas_recibidas_3 = array();
+echo "<pre>".PHP_EOL;
 
-foreach($players as $player) {
-array_push($listat_goles_1, $player->getGoals());
-array_push($listat_faltas_realizadas_2, $player->getFouls_made());
-array_push($listat_faltas_recibidas_3, $player->getFouls_received());
-}
-$max_goals = (max($listat_goles_1));
-$min_fouls_made = (min($listat_faltas_realizadas_2));
-$max_fouls_received = (max($listat_faltas_recibidas_3));
-//1
-foreach ($players as $player) {
-  if ($player->getGoals() == $max_goals) {
-    echo $player->getName()." es el jugador que hizo la maxima cantidad de anotaciones con ".$max_goals." goles.\n";
-  }
-} 
-//2
-foreach ($players as $player) {
-  if ($player->getFouls_made() == $min_fouls_made) {
-    echo $player->getName()." es el jugador que hizo la minima cantidad de faltas con ".$min_fouls_made." faltas realizadas.\n";
-  }
-}
-//3
-foreach ($players as $player) {
-  if ($player->getFouls_received() == $max_fouls_received) {
-    echo $player->getName()." es el jugador que recibio la maxima cantidad de faltas con ".$max_fouls_received." faltas recibidas.\n";
-  }
-}
-//4
-foreach ($players as $player) {
-  echo "\n".($player->getName())." tiene la posicion de ".($player->getPosition()).".";
-}
+    // find player with most goals:
+    echo $players->getPlayerWithMostGoals().PHP_EOL;
+
+    // find player with most fouls received:
+    echo $players->getPlayerWithMostFoulsReceived().PHP_EOL;
+
+    // find player with least fouls committed:
+    echo $players->getPlayerWithLeastFoulsCommitted().PHP_EOL;
+
+    // Echo PHP_EOL;
+    // echo "Player positions: ".PHP_EOL;
+    // echo $players->showPositions().PHP_EOL;
+
+echo "</pre>";
 ?>
