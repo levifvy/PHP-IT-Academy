@@ -1,129 +1,170 @@
-{use: pizzeria}
-db.createCollection("usuario");
-{dc.usuario.insertOne([
-                    {
-                        "id_usuario": "",
-                        "tipo_usuario": ENUM("free","premiun"),
-                        "nombre": "",
-                        "email": "",
-                        "password": "",
-                        "fecha_nacimiento": "",
-                        "genero": ENUM("M","F","O"),
-                        "pais": "",
-                        "codigoPostal": ""
-                    }
-                    ])
-}
+{use: spotify
+
+    db.createCollection('users');
+    {db.users.insertOne([
+        {
+            id_user: ObjectID(),
+            type_user: ENUM("free","premiun"),
+            email: 'user1@example.com',
+            password: 'password1',
+            username: 'user1',
+            birth_date: new Date('1990-01-01'),
+            gender: 'male',
+            country: 'USA',
+            postal_code: '12345',
+            following_artists:[
+                        {artist_id: ObjectID(1)},
+                        {artist_id: ObjectID(2)}
+                        ],
+            favorites_albums_songs:[
+                        {album_id: ObjectID(1)},
+                        {song_id: ObjectID(2)}
+                        ]
+          },
+        ])
+    }
     
-db.createCollection("suscripciones");
-{dc.suscripciones.insertOne([
-                    {
-                        "id_suscripcion": "",
-                        "fecha_inicio": "",
-                        "fecha_renovacion": Enum("domicilio", "tienda"),
-                        "metodo_pago": ENUM("creditCard", "payPal"),
-                        "id_cliente": ""
-                    }
-                    ])
-}
- 
-db.createCollection("pago");
-{dc.pago.insertOne([
-                    {
-                        "id_pago": "",
-                        "numero_creditCard": "hamburguesa",
-                        "creditCard_expiracion_mes": "",
-                        "creditCard_expiracion_anyo": "",
-                        "creditCard_security_code": "",
-                        "usuario_de_payPal": ""
-                    }
-                    ])
-}
-  
-db.createCollection("registro_de_pago");
-{db.registro_de_pago.insertOne([
-                    {
-                        "id_cliente" : "",
-                        "id_suscripcion": "",
-                        "numero_de_orden": "",
-                        "fecha_primer_pago":"",
-                        "fecha_ultimo_pago":"",
-                        "historial_lista_fechas_pagos":"",
-                        "total" : ""
-                    }
-                    ])
-}
+    db.createCollection('subscriptions');
+    {db.subscriptions.insertOne([
+        {
+            id_suscription: ObjectID(),
+            start_date: new Date('2023-01-01'),
+            renewal_date: new Date('2024-01-01'),
+            user_id: ObjectID(),
+            payment_method: ENUM('creditcard', 'paypal_account'),
+        }
+        ])
+    }
 
-db.createCollection("playLists");
-{db.playLists.insertOne([
-                    {
-                        "id_playlist": "",
-                        "id_usuario": "",
-                        "titulo_de_playlist": "",
-                        "numero_de_canciones": "",
-                        "fecha_creacion_playlist": "",
-                        "tipo_de_playlist" : ENUM("activa", "eliminada"),
-                        "playlist_eliminada":{
-                                            "id_playlist_eliminada": "",
-                                            "titulo_de_playlist_eliminada": "",
-                                            "fecha_playlist_eliminada" : "",
-                                            "recuperar_playlist": ENUM("true", "false")
-                                            }  
-                    }
-                    ])
+    db.createCollection('creditcards');
+    {db.creditcards.insertOne([
+        {
+            id_creditcard: ObjectID(),
+            card_number: '1234567890123456',
+            expiration_month: 12,
+            expiration_year: 2025,
+            security_code: '123',
+            user_id: ObjectID(),
+        }
+        ])
+    }
+
+    db.createCollection('paypal_pay');
+    {db.paypal_pay.insertOne([
+        {
+            id_paypal_pay: ObjectID(),
+            paypal_username: 'user1_paypal',
+            user_id: ObjectID(),
+        }
+        ])
+    }
+
+    db.createCollection('payments');
+    {dc.payments.insertOne([
+        {
+            id_payment: ObjectID(),
+            user_id: ObjectID(),
+            payment_records:[
+                {
+                id_payment_record: ObjectID('pago1_dfv45'),
+                order_number: '123456789',
+                total: 9.99,
+                date: new Date('2023-03-01'),
+                },
+                {
+                id_payment_record: ObjectID('pago2_dfv45'),
+                order_number: '267833889',
+                total: 30.48,
+                date: new Date('2023-03-01'),
+                }
+            ],
+        }
+        ])
+    }
+
+    db.createCollection('playlists');
+    {db.playlists.insertOne([
+        {
+            id_playlist: ObjectID(),
+            title: 'My Playlist',
+            songs_list:[
+                        {
+                        song_id: ObjectID(1),
+                        },
+                        {
+                        song_id: ObjectID(2),
+                        },
+                        ],
+            song_count: 10,
+            type_playlist : ENUM("active", "deleted"),
+            created_by:[
+                        {
+                        user_id: ObjectID(),
+                        creation_date: new Date('2023-01-01'),
+                        }  
+                        ],
+            playlist_deleted:[
+                        {
+                        playlist_id: ObjectID(),
+                        deleted_date: new Date('2023-01-01'),
+                        retrieve_playlist: Boolean("true", "false")
+                        }  
+                        ],
+            adding_songs:[
+                        {
+                        user_id: ObjectID(),
+                        song_id: ObjectID(),
+                        added_date: new Date('2023-05-01')
+                        }  
+                        ]
+        }
+        ])
+    }
+
+    db.createCollection('songs');
+    {db.songs.insertOne([
+            {   
+                id_song: ObjectID(),
+                album_id: ObjectID(1),
+                title: 'Song 1',
+                duration: 180,
+                plays_counted: 100, 
+            }
+        ])
+    }
+
+    db.createCollection("albums");
+    {db.albums.insertOne([
+            {       
+                id_album: ObjectID(),
+                title: 'Album 1', 
+                release_year: 2022,
+                cover_image: 'album1.jpg',
+                songs_list:
+                    [
+                    {song_id: ObjectID(1)},
+                    {song_id: ObjectID(2)},
+                    ],
+                posted_by: [{
+                    artist_id: ObjectID(),
+                    posted_date: new Date('2023-02-01'),
+                }]
+            }
+        ])
+    
+    }
+    
+    db.createCollection("artists");
+    {db.artists.insertOne([
+            {       
+                id_artist: ObjectID(),
+                name: 'Artist 1',
+                artistImage: 'artist1.jpg',
+                follow_others_artists: [
+                    {artist_id: ObjectID6(1)},
+                    {artist_id: ObjectID(4)}
+                    ] 
+            }
+        ])
+    }
 }
-  
-db.createCollection("playListShare");
-{db.empleado.insertOne([
-                    {
-                        "id_playListShare": "",
-                        "tipo_playlist(activa)": "true",
-                        "id_cancion": "",
-                        "agregado_por_id_usuario": "",
-                        "fecha_cancion_agregada" : ""
-                    }])
-}
-
-db.createCollection("canciones");
-{db.canciones.insertOne([
-                    {       "id_cancion": "",
-                            "id_album": "",
-                            "titulo_cancion": "",
-                            "duracion_cancion": "",
-                            "numero de reproducciones": "" 
-                    }
-                    ])
-
-}
-
-db.createCollection("album");
-{db.album.insertOne([
-                    {       "id_album": "",
-                            "titulo_album": "", 
-                            "any_publicacion": "",
-                            "imagen_de_portada" : ""
-                    }
-                    ])
-
-}
-
-db.createCollection("artista");
-{db.artista.insertOne([
-                    {       "id_artista": "",
-                            "nombre_artista": "",
-                            "imagen_de_artita" : "" 
-                    }
-                    ])
-
-}
-
-db.createCollection("fovoritos");
-{db.fovoritos.insertOne([
-                    {       "id_fovoritos": "",
-                            "id_usuario": "", 
-                            "id_album": "",
-                            "id_cancion": ""
-                    }
-                    ])
-}
-
